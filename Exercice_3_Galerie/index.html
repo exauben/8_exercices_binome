@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+ <body>
+        <div class="gallery">
+            <!-- Filtres : les radios DOIVENT être avant la grille -->
+            <input type="radio" name="filtre" id="f-tous" checked>
+            <input type="radio" name="filtre" id="f-nature">
+            <input type="radio" name="filtre" id="f-ville">
+            <input type="radio" name="filtre" id="f-animaux">
+            <div class="filters">
+                <label for="f-tous">Toutes</label>
+                <label for="f-nature">🌿 Nature</label>
+                <label for="f-ville"> ️ Ville</label>
+                <label for="f-animaux">🐾 Animaux</label>
+            </div>
+            <div class="grid">
+                <a href="#photo1" class="item nature">
+                    <div class="thumb" style="background:linear-gradient(135deg,#84cc16,#166534)">🌲</div>
+                    <span class="caption">Forêt de pins</span> </a>
+                <!-- 8 autres éléments à créer -->
+            </div>
+            <!-- Lightbox : une par photo -->
+            <div class="lightbox" id="photo1">
+                <a href="#" class="lb-close">✕</a>
+                <div class="lb-content">
+                    <div class="lb-img" style="background:linear-gradient(135deg,#84cc16,#166534)">🌲</div>
+                    <p>Forêt de pins</p>
+                </div>
+            </div>
+        </div>
+ </body>
+</html>

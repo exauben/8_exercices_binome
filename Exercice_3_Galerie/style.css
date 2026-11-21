@@ -1,0 +1,174 @@
+/* Réglages de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  color: #20243a;
+  background: #f4f6fb;
+}
+
+/* Conteneur principal de la galerie */
+.gallery {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+/* Cache les boutons radio, tout en les gardant fonctionnels */
+.gallery input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Boutons des filtres */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.filters label {
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 3px 12px #20243a12;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Met en évidence le filtre sélectionné */
+#f-tous:checked ~ .filters label[for="f-tous"],
+#f-nature:checked ~ .filters label[for="f-nature"],
+#f-ville:checked ~ .filters label[for="f-ville"],
+#f-animaux:checked ~ .filters label[for="f-animaux"] {
+  color: white;
+  background: #4055dc;
+}
+
+/* Grille des images */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Carte d’une image */
+.item {
+  overflow: hidden;
+  border-radius: 14px;
+  background: white;
+  color: #20243a;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 5px 18px #20243a12;
+  transition: transform 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-4px);
+}
+
+/* Aperçu de l’image */
+.thumb {
+  min-height: 190px;
+  display: grid;
+  place-items: center;
+  font-size: 58px;
+}
+
+/* Légende sous l’image */
+.caption {
+  display: block;
+  padding: 14px;
+  font-weight: bold;
+}
+
+/* Filtres : les éléments doivent avoir les classes nature, ville ou animaux */
+#f-nature:checked ~ .grid .item:not(.nature),
+#f-ville:checked ~ .grid .item:not(.ville),
+#f-animaux:checked ~ .grid .item:not(.animaux) {
+  display: none;
+}
+
+/* Fond de la fenêtre agrandie */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #101321eF;
+}
+
+/* Affiche la photo quand on clique dessus */
+.lightbox:target {
+  display: flex;
+}
+
+/* Bouton pour fermer la fenêtre */
+.lb-close {
+  position: absolute;
+  top: 20px;
+  right: 26px;
+  color: white;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+/* Contenu de la fenêtre */
+.lb-content {
+  width: min(600px, 100%);
+  padding: 18px;
+  border-radius: 16px;
+  background: white;
+  text-align: center;
+}
+
+.lb-img {
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 90px;
+}
+
+.lb-content p {
+  margin: 14px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Adaptation aux tablettes */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .thumb {
+    min-height: 160px;
+  }
+}
+
+/* Adaptation aux téléphones */
+@media (max-width: 450px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lb-img {
+    min-height: 250px;
+  }
+}

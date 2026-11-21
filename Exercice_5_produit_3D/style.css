@@ -1,0 +1,158 @@
+/* Réglages généraux */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  color: #252943;
+  background: #f1f3f9;
+}
+
+/* Donne de la profondeur à la carte 3D */
+.scene {
+  width: min(340px, 90vw);
+  height: 440px;
+  perspective: 1000px;
+}
+
+/* La carte peut être sélectionnée au clavier grâce à tabindex="0" */
+.card3d {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+/* Contient le recto et le verso, et permet la rotation */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+/* Retourne la carte au survol ou quand elle est sélectionnée au clavier */
+.card3d:hover .card-inner,
+.card3d:focus .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Style commun aux deux faces */
+.face {
+  position: absolute;
+  inset: 0;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 12px 35px #20243a25;
+  backface-visibility: hidden;
+}
+
+/* Recto de la carte */
+.front {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Étiquette de réduction */
+.badge-promo {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: #713b00;
+  background: #ffdf65;
+  font-weight: bold;
+}
+
+/* Illustration du casque */
+.product-img {
+  width: 100%;
+  height: 210px;
+  margin: 20px 0;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #eef1f8;
+  font-size: 90px;
+}
+
+.face h3 {
+  margin: 10px 0;
+}
+
+/* Prix du produit */
+.price {
+  color: #4055dc;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.price del {
+  margin-right: 8px;
+  color: #888;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* Verso de la carte */
+.back {
+  align-items: flex-start;
+  justify-content: center;
+  transform: rotateY(180deg);
+}
+
+/* Note du produit */
+.stars {
+  color: #efa900;
+  font-size: 22px;
+}
+
+.stars span {
+  color: #555;
+  font-size: 15px;
+}
+
+/* Liste des caractéristiques */
+.specs {
+  padding-left: 0;
+  list-style: none;
+  line-height: 2;
+}
+
+/* Bouton d'achat */
+.buy-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  color: white;
+  background: #4055dc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.buy-btn:hover {
+  background: #2f40b5;
+}
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 400px) {
+  .scene {
+    height: 410px;
+  }
+
+  .face {
+    padding: 20px;
+  }
+}

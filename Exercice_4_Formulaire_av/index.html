@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form class="form" action="#" method="post">
+            <h2>Créer un compte</h2>
+            <div class="field">
+                <input type="text" id="nom" placeholder=" " required minlength="3">
+                <label for="nom">Nom complet</label>
+                <span class="icon">✓</span>
+                <p class="error">Veuillez saisir votre nom (3 caractères min.)</p>
+            </div>
+            <div class="field">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Adresse e-mail</label>
+                <span class="icon">✓</span>
+                <p class="error">Adresse e-mail invalide</p>
+            </div>
+            <div class="field password-field">
+                <input type="password" id="mdp" placeholder=" " required
+                pattern="(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}">
+                <label for="mdp">Mot de passe</label>
+                <span class="icon">✓</span>
+                <ul class="rules">
+                    <li class="r-length">8 caractères minimum</li>
+                    <li class="r-upper">1 lettre majuscule</li>
+                    <li class="r-digit">1 chiffre</li>
+                    <li class="r-special">1 caractère spécial (!@#...)</li>
+                </ul>
+            </div>
+            <!-- À compléter : confirmation, select, date, radios, checkboxes, bouton -->
+        </form>
+  </body>
+</html>
