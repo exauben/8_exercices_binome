@@ -1,0 +1,148 @@
+/* Applique un calcul de taille plus simple à tous les éléments */
+* {
+
+  box-sizing: border-box;
+}
+
+/* Style général de la page */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #20243a;
+
+}
+
+/* Barre de navigation */
+.site-header {
+  position: relative;
+  z-index: 10;
+  min-height: 72px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #20243a;
+}
+
+/* Nom et logo du site */
+.logo {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Menu affiché sur les grands écrans */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Liens du menu */
+.menu a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Couleur des liens quand on passe la souris dessus */
+.menu a:hover {
+  color: #9daaff;
+}
+
+/* Cache la case à cocher qui contrôle le menu */
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Cache le bouton hamburger sur les grands écrans */
+.burger {
+  display: none;
+}
+
+/* Donne un peu d’espace à la section de démonstration */
+main section {
+  padding: 40px 6%;
+  background: #f4f6fb;
+}
+
+/* Adaptation du menu aux petits écrans */
+@media (max-width: 768px) {
+  /* Réduit la hauteur de la barre sur mobile */
+  .site-header {
+    min-height: 68px;
+  }
+
+  /* Affiche le bouton hamburger */
+  .burger {
+    position: relative;
+    z-index: 12;
+    width: 32px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  /* Dessine les trois traits du bouton */
+  .burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: white;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  /* Cache le menu jusqu’à ce qu’on ouvre le hamburger */
+  .menu {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 10px 0;
+    background: #20243a;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  }
+
+  /* Affiche chaque lien sur toute la largeur du menu */
+  .menu a {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Affiche le menu quand la case est cochée */
+  .menu-toggle:checked ~ .menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Incline le premier trait pour former le haut d’une croix */
+  .menu-toggle:checked + .burger span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  /* Cache le trait du milieu */
+  .menu-toggle:checked + .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Incline le dernier trait pour former le bas d’une croix */
+  .menu-toggle:checked + .burger span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+}
